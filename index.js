@@ -1,7 +1,8 @@
 const express = require('express')
-const { Sequelize } = require('sequelize')
+const { Sequelize, Op, Model, DataTypes } = require('sequelize')
 const exphbs = require('express-handlebars')
 const path = require('path')
+
 const dluxRoutes = require('./routes/dlux')
 
 const sequelize = new Sequelize('dlux_db', 'postgres', '123456', {
@@ -37,8 +38,6 @@ async function start() {
         app.listen(PORT, () => {
             console.log('Server - OK')
         })
-
-
       } catch (error) {
         console.error('Unable to connect to the database:', error);
       }
